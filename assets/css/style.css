@@ -1,0 +1,44 @@
+    body {
+        background-color: #000d33;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+    }
+    
+    button,
+    div,
+    form,
+    input {
+      margin: 5px;
+    }
+
+    #animal-add {
+        font: bolder;
+    }
+
+    #giphy-search {
+        border-radius: 5px;
+    }
+ 
+    #giphy-form {
+        float: right;
+    }
+
+    #emotion-add {
+        color: red;
+    }
+
+    #add-emotion,
+    .emotion-btn {
+        background-color: red;
+        border-radius: 5px;
+        height: 23.988636px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 80%;
+    font: bold;
+    }
+  .emotion {
+      display: inline-block;
+  }
+   
