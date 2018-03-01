@@ -46,48 +46,59 @@
           method: "GET"
         }).then(function(response) {
            console.log(response)
-          // Creating a div to hold the emotion giphys
-          var emotionDiv = $("<div class='emotion'>");
 
-          // Storing the rating data
-          var rating = response.data.rating;
+// i am having difficulties getting this for loop to loop through the new array of 25 that is created in the response from my ajax requests
+// the only array i can get the loop to work on is the emotions, which has 5 items. it is just duplicating itself 5 times
 
-          // Creating an element to have the rating displayed
-          var pOne = $("<p>").text("Rating: " + rating);
+// ending curly bracket for the for loop below is on line 96
+          //  for (i = 0; i < emotions.length; i++) {    
+              
+             // Creating a div to hold the emotion giphys
+             var emotionDiv = $("<div class='emotion'>");
+              
+              // Storing the rating data
+              var rating = response.data[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].rating;
+              
+              // Creating an element to have the rating displayed
+              var pOne = $("<p>").text("Rating: " + rating);
+                
+                // Displaying the rating
+                emotionDiv.append(pOne);
+                
+                // Retrieving the URL for the image
+                
+                var imgURL = response.data[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].images.fixed_height.url
+                
+                // Creating an element to hold the image
+                var image = $("<img class='gif'>").attr("src", imgURL);
 
-          // Displaying the rating
-          emotionDiv.append(pOne);
-
-          // Retrieving the URL for the image
-          var imgURL = response.data.images;
-
-          // Creating an element to hold the image
-          var image = $("<img class='gif'>").attr("src", imgURL);
-          
-        //   This function will be used to animate each individual giphy once you hover over it on the page
-          $(".gif").on("mouseover", function () {
-            var state = $(this).attr("data-state")
-            
-            if (state === "still") {
-        var animate = $(this).attr('data-animate')
-        $(this).attr("src", animate)
-        $(this).attr("data-state","animate")
-      }
-
-      else {
-        var still = $(this).attr("data-still")
-        $(this).attr("src", still)
-        $(this).attr("data-state", "still")
-      }
-    });
-          // Appending the image
-          emotionDiv.append(image);
-
-          // Putting the entire emotion above the previous emotions
-          $("#giphy-view").prepend(emotionDiv);
-        });
-
-      }
+                // I could not get the below function to operate properly. I will continue to work towards figuring this out.
+                //   This function will be used to animate each individual giphy once you click on it.
+                //       $(".gif").on("click", function () {
+                  //         var state = $(this).attr("data-state")
+                  
+                  //         if (state === "still") {
+                    //     var animate = $(this).attr('data-animate')
+                    //     $(this).attr("src", animate)
+                    //     $(this).attr("data-state","animate")
+                    //   }
+                    
+                    //   else {
+                      //     var still = $(this).attr("data-still")
+                      //     $(this).attr("src", still)
+                      //     $(this).attr("data-state", "still")
+                      //   }
+                      // });
+                      
+                      // Appending the image
+                      emotionDiv.append(image);
+                      
+                      // Putting the entire emotion above the previous emotions
+                      $("#giphy-view").prepend(emotionDiv);
+                    // }
+                    });
+                    
+                  }
 
       // Function for displaying emotion data
       function renderButtons() {
@@ -113,7 +124,7 @@
         }
       }
 
-      // This function handles events where a emotion button is clicked
+      // This function handles events where an emotion button is clicked
       $("#add-emotion").on("click", function(event) {
         event.preventDefault();
         // This line grabs the input from the textbox
@@ -125,9 +136,10 @@
         // Calling renderButtons which handles the processing of our emotion array
         renderButtons();
       });
-
+// I could not seem to figure out how to keep the giphys still and use the on-click function to activate the ones that loaded on the page. 
       // Adding a click event listener to all elements with a class of "emotion-btn"
       $(document).on("click", ".emotion-btn", displayemotionInfo);
+  
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
